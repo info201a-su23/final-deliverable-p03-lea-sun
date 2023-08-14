@@ -1,6 +1,7 @@
 library(shiny)
 library(ggplot2)
 library(dplyr)
+library(tidyverse)
 
 
 server <- function(input, output) {
@@ -15,9 +16,9 @@ server <- function(input, output) {
   
   output$bar_chart <- renderPlot({
     year_data <- reactive_data()
-    # year_data$Age_Group <- gsub("_", " ", year_data$Age_Group)
+    # print(year_data)
     
-    ggplot(year_data, aes(x = Age_Group, y = Depression_Rate, fill = Age_Group)) +
+    ggplot(year_data, aes(x = Age_Group, y = as.numeric(Depression_Rate), fill = Age_Group)) +
       geom_bar(stat = "identity") +
       scale_fill_discrete(labels = c("10_14_years_old" = "10 to 14 years old", "15_19_years_old" = "15 to 19 years old", "20_24_years_old" = "20 to 24 years old", "25_29_years_old" = "25 to 29 years old", "30_34_years_old" = "30 to 34 years old", "50_69_years_old" = "50 to 69 years old", "70_years_old" = "70 years old" )) +
       scale_x_discrete(labels = c("10_14_years_old" = "10 to 14 years old", "15_19_years_old" = "15 to 19 years old", "20_24_years_old" = "20 to 24 years old", "25_29_years_old" = "25 to 29 years old", "30_34_years_old" = "30 to 34 years old", "50_69_years_old" = "50 to 69 years old", "70_years_old" = "70 years old" )) +

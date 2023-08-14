@@ -118,7 +118,7 @@ ui <- navbarPage(
              titlePanel("Age Groups in the US"),
              sidebarLayout(
                sidebarPanel(
-                 selectInput("year", label = "Select a Year:", choices = unique(data$Year), selected = 1990)
+                 selectInput("year", label = "Select a Year:", choices = unique(depressionrates$year), selected = 1990)
                ),
                mainPanel(
                  plotOutput("bar_chart")

@@ -114,7 +114,7 @@ ui <- navbarPage(
   tabPanel("Age Groups by Country"),
   tabPanel("Comparing U.S. and Other Countries"),
   tabPanel("Age Groups in the U.S."),
-  library(shiny)
+library(shiny)
 library(ggplot2)
 library(dplyr)
 

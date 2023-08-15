@@ -122,7 +122,8 @@ ui <- navbarPage(
              titlePanel("Depression Rates of Different Age Groups in Different Countries"),
              sidebarLayout(
                sidebarPanel(
-                 selectInput("entity", label = "Select a Country:", choices = unique(depressionrates$entity), selected = "United States")),
+                 # selectInput("entity", label = "Select a Country:", choices = unique(depressionrates$entity), selected = "United States")),
+                 uiOutput("country_line_select")),
                mainPanel(
                  plotOutput("country_line_chart")
                )
@@ -149,9 +150,7 @@ ui <- navbarPage(
     
   ),
     
-  selectInput("Country", label = h3("Select a Country: "), 
-                choices = depressionrates$entity,
-                  selected = "Afghanistan"),
+                  uiOutput("country_select"),
                   plotOutput("comparison_chart"),
   p("This chart attempts to understand how depression rates in different countries directly compare to the United States. 
     By selecting a country to compare with and checking which age groups you want displayed, you will get a side-by-side 

@@ -79,6 +79,12 @@ ggplot(combined_data, aes(x = age_group, y = as.numeric(Depression_Rate), fill =
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 })
 
+output$country_select <- renderUI({
+  selectInput("Country", label = h3("Select a Country: "),
+              choices = unique(valid_countries),
+              selected = "Afghanistan")
+})
+
 reactive_line_data <- reactive({
   selected_country <- input$entity
   country_data <- depressionrates %>%
@@ -109,4 +115,11 @@ output$country_line_chart <- renderPlot({
                                     "70_years_old" = "70 years old")) +
     theme_minimal()
 })
+
+output$country_line_select <- renderUI({
+  selectInput("entity", label = h3("Select a Country: "),
+              choices = unique(valid_countries),
+              selected = "United States")
+})
+
 }

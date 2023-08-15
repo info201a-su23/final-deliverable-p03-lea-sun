@@ -7,7 +7,8 @@ ui <- navbarPage(
   "),
   
   tabPanel("Introduction",
-           h1("Mental Health Across Borders: Analyzing Depression by Country and Age Group"),
+           h1("Mental Health Across Borders: Analyzing Depression by Country and
+              Age Group"),
            
            div(
              img(
@@ -127,8 +128,6 @@ ui <- navbarPage(
                )
              )
              
-             
-             
            ),
            p("This chart attempts to understand depression rate trends across different age groups throughout different years.
              By going through the select box drop down feature, you are able to pick and choose which country's data you want 
@@ -217,6 +216,12 @@ ui <- navbarPage(
              societal and cultural norms, technological growth (or lack thereof), 
              economic disparities, etc."),
            em(strong("Comparing the U.S. to Other Countries")),
+           div(
+             img(
+               src = "https://github.com/info201a-su23/final-deliverable-p03-lea-sun/blob/main/images/chart2_nepal.png?raw=true",
+               width = "750px",
+               height = "370px"),
+             p(em("Comparing Nepal versus the U.S."), style = "font-size:10px")),
             p("The purpose of the chart is to be able to display the data in the
              simplest form to be able to compare selected age groups in
              different countries. By having this direct comparison, we are
@@ -227,7 +232,7 @@ ui <- navbarPage(
              In order to understand if underdeveloped countries
              live with less stress, we can look at the U.S. and Nepal. The
              depression rate for every age category was almost double U.S. 
-             except for the age category 70 years old. This may help determine 
+             except for age groups above 50 years old. This may help determine 
              the quality of life for underdeveloped countries. More 
              specifically,the vulnerability to stress in the older age group of
              70 years. To further explore the subject of higher stress for
@@ -235,13 +240,13 @@ ui <- navbarPage(
              and Pakistan. Similar to Nepal, the U.S. had double stress 
              percentages for every age category except for the age category 70
              years. The age category 70 years is reaching 7% meanwhile the U.S
-             is below 4% depression rate. These specific insights consistently
+             is below 4% depression rate. These specific insights can potentiall
              prove that underdeveloped countries have higher stress percentages
-             for the age category of 70 years. However, it can be concluded 
+             for the age category of 70 years. However, it could also show 
              that the U.S. has a higher stressful and challenging lifestyle
              for every other age category compared to underdeveloped countries.
-             With the help of these findings, we can determine retirement is
-             easier in the U.S. However, more resources are needed to reduce
+             With the help of these findings, we can determine if retirement is
+             easier in certain countries, leading to more resources to reduce
              stress throughout education and work life." ),
            em(strong("U.S. Depression Rates Among Age Group By Year")),
            div(
@@ -295,13 +300,8 @@ ui <- navbarPage(
              the depression rates. If we look at the data as a whole, conclusions
              and implications may be too general or unmeaningful. The specific charts
              comparing the U.S depression levels amongst different age categories 
-             reveals factors that contribute to different lifestyles. Along with
-             another chart comapring the factors of U.S and user-selcted countires. 
-             By specifically choosing underdeveloped countries such as Pakistan
-             and Nepal, data can help conclude age groups of 70 have higher stress
-             than U.S. However, U.S has higher stress fpr every other age category. 
-             This dataset revealed the societal norms and cultural difference and
-             their affects of stress levels on lifestyles."),
+             reveals factors that contribute to different lifestyles, stress 
+             levels, and mental health issues."),
            h2("Implications"),
            p("The broader and main implications are to gain a deeper understanding
              of depression rates and mental health issues according to different
@@ -311,8 +311,8 @@ ui <- navbarPage(
              are struggling. As seen in our visualizations, not only is there variation
              among countries of different qualities and factors, there is also
              significant change and variation among age groups in the U.S. due to age
-             and other variables. This means the policies, measures, and treatments 
-             require holistic approaches.")
+             and other variables. This means that the policies, measures, and 
+             treatments aimed at mental health require holistic approaches.")
   )
 )
   

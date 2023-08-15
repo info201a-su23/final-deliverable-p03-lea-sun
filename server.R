@@ -8,7 +8,7 @@ server <- function(input, output) {
   
   reactive_bar_data <- reactive({
     year_data <- depressionrates %>%
-      filter(year == input$year) %>%
+      filter(entity == "United States", year == input$year) %>%
       pivot_longer(cols = c("10_14_years_old", "15_19_years_old", "20_24_years_old", "25_29_years_old", "30_34_years_old", "50_69_years_old", "70_years_old"),
                    names_to = "Age_Group", values_to = "Depression_Rate")
     return(year_data)

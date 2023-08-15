@@ -217,21 +217,7 @@ ui <- navbarPage(
              societal and cultural norms, technological growth (or lack thereof), 
              economic disparities, etc."),
            em(strong("Comparing the U.S. to Other Countries")),
-           p(""),
-           em(strong("U.S. Depression Rates Among Age Group By Year")),
-           div(
-             style = "display: flex; justify-content: space-between;",
-             img(
-               src = "https://github.com/info201a-su23/final-deliverable-p03-lea-sun/blob/main/images/chart3_1990.png?raw=true",
-               style = "width: 45%;"
-             ),
-             img(
-               src = "https://github.com/info201a-su23/final-deliverable-p03-lea-sun/blob/main/images/chart3_2017.png?raw=true",  
-               style = "width: 45%;"
-             )
-           ),
-           p(em("Comaprsion of Depression Rates between Age Groups in U.S versus other countries in 2017"), style = "font-size:10px"),
-           p("The purpose of the chart is to be able to display the data in the
+            p("The purpose of the chart is to be able to display the data in the
              simplest form to be able to compare selected age groups in
              different countries. By having this direct comparison, we are
              able to see what age groups have higher percentages than
@@ -239,9 +225,9 @@ ui <- navbarPage(
              bar chart is to be able to notice what countries have 
              higher depression rates and what possible factors contribute. 
              In order to understand if underdeveloped countries
-             live less stress, the comparison of the U.S. and Nepal. The
+             live with less stress, we can look at the U.S. and Nepal. The
              depression rate for every age category was almost double U.S. 
-             Except for the age category 70 years old. This may help determine 
+             except for the age category 70 years old. This may help determine 
              the quality of life for underdeveloped countries. More 
              specifically,the vulnerability to stress in the older age group of
              70 years. To further explore the subject of higher stress for
@@ -257,6 +243,18 @@ ui <- navbarPage(
              With the help of these findings, we can determine retirement is
              easier in the U.S. However, more resources are needed to reduce
              stress throughout education and work life." ),
+           em(strong("U.S. Depression Rates Among Age Group By Year")),
+           div(
+             style = "display: flex; justify-content: space-between;",
+             img(
+               src = "https://github.com/info201a-su23/final-deliverable-p03-lea-sun/blob/main/images/chart3_1990.png?raw=true",
+               style = "width: 45%;"
+             ),
+             img(
+               src = "https://github.com/info201a-su23/final-deliverable-p03-lea-sun/blob/main/images/chart3_2017.png?raw=true",  
+               style = "width: 45%;"
+             )
+           ),
            p(em("Age groups in the U.S. in 1990 versus 2017"), style = "font-size:10px"),
            p("By looking at how depression rates have changed throughout the
              years in the U.S., we can see how specific factors that we are

@@ -114,8 +114,6 @@ ui <- navbarPage(
   tabPanel("Age Groups by Country"),
   tabPanel("Comparing U.S. and Other Countries",
   fluidPage(
-    
-    # Copy the chunk below to make a group of checkboxes
     checkboxGroupInput("checkGroup", label = h3("Checkbox group"), 
                        choices = list("10 to 14 yr olds" = 1, "15 to 19 yr olds" = 2,"20 to 24 yr olds" = 3, "25 to 29 yr old" = 4,
                                       "30 to 34 yr olds" = 5, "50 to 69 yr olds" = 6, "70 yr old" = 7), 
@@ -125,14 +123,12 @@ ui <- navbarPage(
     hr(),
     fluidRow(column(7, verbatimTextOutput("value")))
     
-    
-    
   ),
     
-    # Copy the line below to make a select box 
-    selectInput("Country", label = h3("Select a Country: "), 
+  selectInput("Country", label = h3("Select a Country: "), 
                 choices = unique(depressionrates$entity),
                   selected = "Afghanistan"),
+                  plotOutput("comparison_chart")
   ),
 
   tabPanel("Age Groups in the U.S.",

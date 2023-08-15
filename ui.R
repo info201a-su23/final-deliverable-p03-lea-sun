@@ -6,7 +6,7 @@ ui <- navbarPage(
            div(
              img(
                src = "https://californiahealthline.org/wp-content/uploads/sites/3/2016/09/sad-elderly_7701.jpg?w=770"),
-             p("Source: California Healthline")),
+             p(em("Source: California Healthline"))),
            
            p("By Simran Kaur, Leanna Sun, Susruthi Karanam, and Jullie Jasminez"),
            p("August 14, 2023"),
@@ -88,7 +88,7 @@ ui <- navbarPage(
                width = "600px",
                height = "270px"
              ),
-             p("Source: Progress in Mind")),
+             p(em("Source: Progress in Mind"))),
            
            
            h2("Limitations and Challenges"),
@@ -146,7 +146,7 @@ ui <- navbarPage(
                   plotOutput("comparison_chart")
   ),
 
-  tabPanel("Age Groups in the U.S.",
+  tabPanel("Age Groups in the U.S. by Year",
            fluidPage(
              titlePanel("Age Groups in the US"),
              sidebarLayout(
@@ -162,7 +162,61 @@ ui <- navbarPage(
            )
    ),
 
-  tabPanel("Conclusion")
+  tabPanel("Conclusion",
+           h2("Main Takeaways"),
+           p("Each visualization we have led to its own key takeaways regarding 
+           depression rates by age group and/or location."),
+           em(strong("Depression Rates of Age Groups by Country")),
+           div(
+             style = "display: flex; justify-content: space-between;",
+             img(
+               src = "https://cdn.discordapp.com/attachments/1128417012029329479/1140898780229664788/chart1_uk.png",
+               style = "width: 45%;"
+             ),
+             img(
+               src = "chart1_malaysia.png",  
+               style = "width: 45%;"
+             )
+           ),
+           p("Visualization for the UK versus Malaysia"),
+           p("For this visualization, we look at individual countries and how
+             depression rates vary for each age group over the years. A pattern we
+             noticed is that for a lot of the countries, 70 year olds have the
+             highest or higher rates of depression. This could be explained by
+             various factors, such as smaller populations of older age groups,
+             or older individuals feeling more lonely or isolated due to age.
+             This pattern is especially seen among smaller, less developed countries,
+             as opposed to developed and larger countries with more sophisticated
+             economics and advanced infrastructure and technology. For these larger,
+             more developed countries, a pattern observed is that the higher 
+             age groups mainly consist of younger age groups, such as 20-24 year
+             olds, occasionally with the older age groups as well. For example, in
+             the images above, the United Kingdom, a big developed country, has 
+             seen the most rates among 25 to 29 year olds. Malaysia, on the other 
+             hand, has seen the greatest rates among 70 year olds. The difference
+             between these patterns could be explain by aging populations, differing
+             societal and cultural norms, technological growth (or lack thereof), 
+             economic dispararities, etc."),
+           em(strong("Comparing the U.S. to Other Countries")),
+           p(""),
+           em(strong("U.S. Depression Rates Among Age Group By Year")),
+           p("By looking at how depression rates have changed throughout the
+             years in the U.S., we can see how specific factors that we are
+             surrounded by in our daily lives can contribute to mental health.
+             While 70 year olds consistenly have lower depression rates, over 
+             the years, the rates slowly drop down to below 4%, as opposed to 
+             being over 4% in the 1990s. This could be explained by improved
+             healthcare, stronger social support, generational differences, etc. 
+             Inversely, rates for 10-14 year olds, also have lower rates,
+             have increased over the years, jumping from below 2% in the 90s to over
+             2.5% recently. Additionally, from 1990 to 1999, the graph shows how
+             the three age groups with the highest depression rates are 20 to 
+             24, 25 to 29, and 30 to 34 year olds. After 1999, the depression 
+             rates for 15 to 19 year olds starts to increase, eventually 
+             becoming the age group with the second highest rate. The increase
+             for younger age groups could be explained by cultural shifts or the
+             rise of technology and social media.")
+  )
 )
   
 

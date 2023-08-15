@@ -230,6 +230,17 @@ ui <- navbarPage(
                style = "width: 45%;"
              )
            ),
+           p(em("Comaprsion of Depression Rates between Age Groups in U.S versus other countries in 2017"), style = "font-size:10px"),
+           p("The purpose of the chart is to be able to display the data in the
+             simplist form to be able to compare selected age groups in
+             different countries. By having this direct comparison, we are
+             able to see what age groups have higher percentages than
+             user selected countries. A main takeaway of this
+             barchart is to be able to notice what countries have 
+             higher depression rates and what possible factors contribuate.
+             Whether that be under-developed countries such as Afghanistan
+             and Guinea that are much more underdeveloped. Yet, have lower
+             depression rates than the U.S in all age categories. "),
            p(em("Age groups in the U.S. in 1990 versus 2017"), style = "font-size:10px"),
            p("By looking at how depression rates have changed throughout the
              years in the U.S., we can see how specific factors that we are
@@ -247,7 +258,9 @@ ui <- navbarPage(
              rates for 15 to 19 year olds starts to increase, eventually 
              becoming the age group with the second highest rate. The increase
              for younger age groups could be explained by cultural shifts or the
-             rise of technology and social media."),
+             rise of technology and social media. Yet countries such as Canada and
+             the U.S have simmilar depressionr rates across the age categories due to 
+             the simmilarities in lifestyle. Both the U.S "),
            
            h2("Important Insight"),
            p("Since the dataset does not explicitly measure other factors along

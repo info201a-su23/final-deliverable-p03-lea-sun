@@ -27,27 +27,47 @@ server <- function(input, output) {
       theme(axis.text.x = element_text(angle = 45, hjust = 1))
   })
   
-  output$comparison_chart <- renderPlot({
+  reactive_compare_data <- reactive({
     selected_age_groups <- input$checkGroup
     selected_country <- input$Country
     
+    checkbox_to_column <- c(
+      "1" = "10_14_years_old",
+      "2" = "15_19_years_old",
+      "3" = "20_24_years_old",
+      "4" = "25_29_years_old",
+      "5" = "30_34_years_old",
+      "6" = "50_69_years_old",
+      "7" = "70_years_old"
+    )
+    
+    columns_to_select <- c("year", "entity", checkbox_to_column[selected_age_groups])
+    
     long_data_selected <- depressionrates %>%
       filter(year == 2017, entity == selected_country) %>%
-      pivot_longer(cols = starts_with(selected_age_groups), names_to = "age_group", values_to = "Depression_Rate") %>%
+      select(all_of(columns_to_select)) %>%
+      pivot_longer(cols = checkbox_to_column[selected_age_groups], names_to = "age_group", values_to = "Depression_Rate") %>%
       mutate(group = "Selected Country")
     
     long_data_us <- depressionrates %>%
       filter(year == 2017, entity == "United States") %>%
-      pivot_longer(cols = starts_with(selected_age_groups), names_to = "age_group", values_to = "Depression_Rate") %>%
+      select(all_of(columns_to_select)) %>%
+      pivot_longer(cols = checkbox_to_column[selected_age_groups], names_to = "age_group", values_to = "Depression_Rate") %>%
       mutate(group = "United States")
     
     combined_data <- bind_rows(long_data_selected, long_data_us)
+    return(combined_data)
+    
+  })
+  
+  output$comparison_chart <- renderPlot({
+    combined_data <- reactive_compare_data()
     
     ggplot(combined_data, aes(x = age_group, y = as.numeric(Depression_Rate), fill = group)) +
       geom_bar(stat = "identity", position = "dodge") +
-      labs(title = paste("Comparing Depression Rates for", selected_country, "and United States"),
+      labs(title = paste("Comparing Depression Rates for", input$Country, "and United States (2017)"),
            x = "Age Group", y = "Depression Rate (%)") +
-      scale_fill_discrete(name = "Legend", labels = c(selected_country, "United States")) +
+      scale_fill_discrete(name = "Legend", labels = c(input$Country, "United States")) +
       theme_minimal() +
       theme(axis.text.x = element_text(angle = 45, hjust = 1))
   })

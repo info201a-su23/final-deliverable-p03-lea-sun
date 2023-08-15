@@ -1,12 +1,18 @@
 ui <- navbarPage(
   "Global Depression Rates",
+  tags$style("
+    nav div{
+      background-color: #BCE5FF;
+    }
+  "),
+  
   tabPanel("Introduction",
            h1("Mental Health Across Borders: Analyzing Depression by Country and Age Group"),
            
            div(
              img(
                src = "https://californiahealthline.org/wp-content/uploads/sites/3/2016/09/sad-elderly_7701.jpg?w=770"),
-             p(em("Source: California Healthline"))),
+             p(em("Source: California Healthline"), style = "font-size:10px")),
            
            p("By Simran Kaur, Leanna Sun, Susruthi Karanam, and Jullie Jasminez"),
            p("August 14, 2023"),
@@ -66,14 +72,13 @@ ui <- navbarPage(
              the reluctance of individuals to openly address their mental health
              concerns, particularly in regions where mental health awareness is 
              limited. This can lead to skewed data representation, especially in
-             areas where acknowledging such issues is culturally restrained. 
-             Another constraint lies in the subjective nature of surveys and 
-             screening data, as interpretations of mental health issues can vary
-             widely among individuals and across cultures. Discrepancies arise when
-             differing classifications affect reporting, potentially hindering 
-             the accuracy and consistency of the data. Additionally, variations 
-             in diagnostic expertise among healthcare professionals may 
-             inadvertently lead to misdiagnoses."),
+             areas where acknowledging such issues is culturally restricted. 
+             Another issue is the subjective nature of surveys and 
+             data collection, as interpretations of mental health issues can vary
+             widely among individuals and across cultures. Additionally, there is
+             data missing for age groups between 35 and 49. The exclusion of this
+             group results in lack of proper representation and insight on 
+             depression rates of these age groups."),
            p("Our objective is to comprehensively examine global depression rates
            by age group, serving a crucial role in addressing the global mental
            health crisis. Through meticulous analysis of a comprehensive dataset,
@@ -88,7 +93,7 @@ ui <- navbarPage(
                width = "600px",
                height = "270px"
              ),
-             p(em("Source: Progress in Mind"))),
+             p(em("Source: Progress in Mind"), style = "font-size:10px")),
            
            
            h2("Limitations and Challenges"),
@@ -156,9 +161,6 @@ ui <- navbarPage(
                  plotOutput("bar_chart")
                )
              )
-             
-             
-             
            )
    ),
 
@@ -166,19 +168,20 @@ ui <- navbarPage(
            h2("Main Takeaways"),
            p("Each visualization we have led to its own key takeaways regarding 
            depression rates by age group and/or location."),
+           p(""),
            em(strong("Depression Rates of Age Groups by Country")),
            div(
              style = "display: flex; justify-content: space-between;",
              img(
-               src = "https://cdn.discordapp.com/attachments/1128417012029329479/1140898780229664788/chart1_uk.png",
+               src = "https://github.com/info201a-su23/final-deliverable-p03-lea-sun/blob/main/images/chart1_uk.png?raw=true",
                style = "width: 45%;"
              ),
              img(
-               src = "chart1_malaysia.png",  
+               src = "https://github.com/info201a-su23/final-deliverable-p03-lea-sun/blob/main/images/chart1_malaysia.png?raw=true",  
                style = "width: 45%;"
              )
            ),
-           p("Visualization for the UK versus Malaysia"),
+           p(em("Visualization for the UK versus Malaysia"), style = "font-size:10px"),
            p("For this visualization, we look at individual countries and how
              depression rates vary for each age group over the years. A pattern we
              noticed is that for a lot of the countries, 70 year olds have the
@@ -196,14 +199,27 @@ ui <- navbarPage(
              hand, has seen the greatest rates among 70 year olds. The difference
              between these patterns could be explain by aging populations, differing
              societal and cultural norms, technological growth (or lack thereof), 
-             economic dispararities, etc."),
+             economic disparities, etc."),
            em(strong("Comparing the U.S. to Other Countries")),
            p(""),
            em(strong("U.S. Depression Rates Among Age Group By Year")),
+           div(
+             style = "display: flex; justify-content: space-between;",
+             img(
+               src = "https://github.com/info201a-su23/final-deliverable-p03-lea-sun/blob/main/images/chart3_1990.png?raw=true",
+               style = "width: 45%;"
+             ),
+             img(
+               src = "https://github.com/info201a-su23/final-deliverable-p03-lea-sun/blob/main/images/chart3_2017.png?raw=true",  
+               style = "width: 45%;"
+             )
+           ),
+           p(em("Age groups in the U.S. in 1990 versus 2017"), style = "font-size:10px"),
            p("By looking at how depression rates have changed throughout the
              years in the U.S., we can see how specific factors that we are
              surrounded by in our daily lives can contribute to mental health.
-             While 70 year olds consistenly have lower depression rates, over 
+             As seen in the two images above of 1990 and 2017 in the U.S.,
+             while 70 year olds consistenly have lower depression rates, over 
              the years, the rates slowly drop down to below 4%, as opposed to 
              being over 4% in the 1990s. This could be explained by improved
              healthcare, stronger social support, generational differences, etc. 
@@ -215,7 +231,33 @@ ui <- navbarPage(
              rates for 15 to 19 year olds starts to increase, eventually 
              becoming the age group with the second highest rate. The increase
              for younger age groups could be explained by cultural shifts or the
-             rise of technology and social media.")
+             rise of technology and social media."),
+           
+           h2("Important Insight"),
+           p("Since the dataset does not explicitly measure other factors along
+             with depression rates, it forces us to take a deeper look at potential
+             explanations and factors that contribute to changing and varying
+             depression rates among age groups and locations. Possible 
+             contributing explanations can include the impact of aging populations,
+             shifting cultural and societal norms, the role of technological
+             growth and the internet, economic and income disparities, access to
+             mental health resources, average education levels, environmental 
+             factors, and more. By looking at data on specific countries and age
+             groups, we can simultaneously take into account other information 
+             about the location and age group to help gain more context on 
+             the depression rates. If we look at the data as a whole, conclusions
+             and implications may be too general or unmeaningful."),
+           h2("Implications"),
+           p("The broader and main implications are to gain a deeper understanding
+             of depression rates and mental health issues according to different
+             contexts. Specialized and specific policies for different age groups,
+             within different countries, and even for different contributing factors
+             are needed to properly address mental health issues and help those who
+             are struggling. As seen in our visualizations, not only is there variation
+             among countries of different qualities and factors, there is also
+             significant change and variation among age groups in the U.S. due to age
+             and other variables. This means the policies, measures, and treatments 
+             require holistic approaches.")
   )
 )
   

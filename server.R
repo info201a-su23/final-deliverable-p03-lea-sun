@@ -16,7 +16,6 @@ server <- function(input, output) {
   
   output$bar_chart <- renderPlot({
     year_data <- reactive_bar_data()
-    # print(year_data)
     
     ggplot(year_data, aes(x = Age_Group, y = as.numeric(Depression_Rate), fill = Age_Group)) +
       geom_bar(stat = "identity") +
@@ -51,5 +50,36 @@ server <- function(input, output) {
       scale_fill_discrete(name = "Legend", labels = c(selected_country, "United States")) +
       theme_minimal() +
       theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  })
+  
+  reactive_line_data <- reactive({
+    selected_country <- input$entity
+    country_data <- depressionrates %>%
+      filter(entity == selected_country)
+    
+    country_depression_rates <- country_data %>%
+      pivot_longer(cols = c("10_14_years_old", "15_19_years_old", "20_24_years_old", "25_29_years_old", "30_34_years_old", "50_69_years_old", "70_years_old"),
+                   names_to = "AgeGroup", values_to = "DepressionRate")
+    
+    return(country_depression_rates)
+  })
+  
+  output$country_line_chart <- renderPlot({
+    country_depression_rates <- reactive_line_data()
+    
+    ggplot(country_depression_rates, aes(x = year, y = DepressionRate, color = AgeGroup)) +
+      geom_line() +
+      labs(title = paste("Depression Rates in", input$entity, "by Age Group Throughout the Years"),
+           x = "Year",
+           y = "Depression Rate Percentage (%)",
+           color = "Age Group") +
+      scale_color_discrete(labels = c("10_14_years_old" = "10-14 years old",
+                                      "15_19_years_old" = "15-19 years old",
+                                      "20_24_years_old" = "20-24 years old",
+                                      "25_29_years_old" = "25-29 years old",
+                                      "30_34_years_old" = "30-34 years old",
+                                      "50_69_years_old" = "50-69 years old",
+                                      "70_years_old" = "70 years old")) +
+      theme_minimal()
   })
 }

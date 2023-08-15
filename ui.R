@@ -111,7 +111,22 @@ ui <- navbarPage(
            a certain demographic and population.")
   ),
   
-  tabPanel("Age Groups by Country"),
+  tabPanel("Age Groups by Country",
+           fluidPage(
+             titlePanel("Depression Rates of Different Age Groups in Different Countries"),
+             sidebarLayout(
+               sidebarPanel(
+                 selectInput("entity", label = "Select a Country:", choices = unique(depressionrates$entity), selected = "United States")),
+               mainPanel(
+                 plotOutput("country_line_chart")
+               )
+             )
+             
+             
+             
+           )
+  ),
+  
   tabPanel("Comparing U.S. and Other Countries",
   fluidPage(
     checkboxGroupInput("checkGroup", label = h3("Checkbox group"), 
@@ -136,8 +151,7 @@ ui <- navbarPage(
              titlePanel("Age Groups in the US"),
              sidebarLayout(
                sidebarPanel(
-                 selectInput("year", label = "Select a Year:", choices = unique(depressionrates$year), selected = 1990)
-               ),
+                 selectInput("year", label = "Select a Year:", choices = unique(depressionrates$year), selected = 1990)),
                mainPanel(
                  plotOutput("bar_chart")
                )

@@ -31,28 +31,16 @@ server <- function(input, output) {
     selected_age_groups <- input$checkGroup
     selected_country <- input$Country
     
-    checkbox_to_column <- c(
-      "1" = "10_14_years_old",
-      "2" = "15_19_years_old",
-      "3" = "20_24_years_old",
-      "4" = "25_29_years_old",
-      "5" = "30_34_years_old",
-      "6" = "50_69_years_old",
-      "7" = "70_years_old"
-    )
-    
-    columns_to_select <- c("year", "entity", checkbox_to_column[selected_age_groups])
-    
     long_data_selected <- depressionrates %>%
       filter(year == 2017, entity == selected_country) %>%
-      select(all_of(columns_to_select)) %>%
-      pivot_longer(cols = checkbox_to_column[selected_age_groups], names_to = "age_group", values_to = "Depression_Rate") %>%
+      select(year, entity, "10_14_years_old", "15_19_years_old", "20_24_years_old", "25_29_years_old", "30_34_years_old", "50_69_years_old", "70_years_old") %>%
+      pivot_longer(cols = c("10_14_years_old", "15_19_years_old", "20_24_years_old", "25_29_years_old", "30_34_years_old", "50_69_years_old", "70_years_old"), names_to = "age_group", values_to = "Depression_Rate") %>%
       mutate(group = "Selected Country")
     
     long_data_us <- depressionrates %>%
       filter(year == 2017, entity == "United States") %>%
-      select(all_of(columns_to_select)) %>%
-      pivot_longer(cols = checkbox_to_column[selected_age_groups], names_to = "age_group", values_to = "Depression_Rate") %>%
+      select(year, entity, "10_14_years_old", "15_19_years_old", "20_24_years_old", "25_29_years_old", "30_34_years_old", "50_69_years_old", "70_years_old") %>%
+      pivot_longer(cols = c("10_14_years_old", "15_19_years_old", "20_24_years_old", "25_29_years_old", "30_34_years_old", "50_69_years_old", "70_years_old"), names_to = "age_group", values_to = "Depression_Rate") %>%
       mutate(group = "United States")
     
     combined_data <- bind_rows(long_data_selected, long_data_us)

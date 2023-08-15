@@ -232,15 +232,31 @@ ui <- navbarPage(
            ),
            p(em("Comaprsion of Depression Rates between Age Groups in U.S versus other countries in 2017"), style = "font-size:10px"),
            p("The purpose of the chart is to be able to display the data in the
-             simplist form to be able to compare selected age groups in
+             simplest form to be able to compare selected age groups in
              different countries. By having this direct comparison, we are
              able to see what age groups have higher percentages than
-             user selected countries. A main takeaway of this
-             barchart is to be able to notice what countries have 
-             higher depression rates and what possible factors contribuate.
-             Whether that be under-developed countries such as Afghanistan
-             and Guinea that are much more underdeveloped. Yet, have lower
-             depression rates than the U.S in all age categories. "),
+             user-selected countries. The main takeaway of this
+             bar chart is to be able to notice what countries have 
+             higher depression rates and what possible factors contribute. 
+             In order to understand if underdeveloped countries
+             live less stress, the comparison of the U.S. and Nepal. The
+             depression rate for every age category was almost double U.S. 
+             Except for the age category 70 years old. This may help determine 
+             the quality of life for underdeveloped countries. More 
+             specifically,the vulnerability to stress in the older age group of
+             70 years. To further explore the subject of higher stress for
+             older ages in underdeveloped countries, the comparison of the U.S.
+             and Pakistan. Similar to Nepal, the U.S. had double stress 
+             percentages for every age category except for the age category 70
+             years. The age category 70 years is reaching 7% meanwhile the U.S
+             is below 4% depression rate. These specific insights consistently
+             prove that underdeveloped countries have higher stress percentages
+             for the age category of 70 years. However, it can be concluded 
+             that the U.S. has a higher stressful and challenging lifestyle
+             for every other age category compared to underdeveloped countries.
+             With the help of these findings, we can determine retirement is
+             easier in the U.S. However, more resources are needed to reduce
+             stress throughout education and work life." ),
            p(em("Age groups in the U.S. in 1990 versus 2017"), style = "font-size:10px"),
            p("By looking at how depression rates have changed throughout the
              years in the U.S., we can see how specific factors that we are
@@ -251,16 +267,20 @@ ui <- navbarPage(
              being over 4% in the 1990s. This could be explained by improved
              healthcare, stronger social support, generational differences, etc. 
              Inversely, rates for 10-14 year olds, also have lower rates,
-             have increased over the years, jumping from below 2% in the 90s to over
-             2.5% recently. Additionally, from 1990 to 1999, the graph shows how
-             the three age groups with the highest depression rates are 20 to 
+             have increased over the years, jumping from below 2% in the 90s to
+             over 2.5% recently. Additionally, from 1990 to 1999, the graph shows
+             how the three age groups with the highest depression rates are 20 to 
              24, 25 to 29, and 30 to 34 year olds. After 1999, the depression 
              rates for 15 to 19 year olds starts to increase, eventually 
              becoming the age group with the second highest rate. The increase
              for younger age groups could be explained by cultural shifts or the
              rise of technology and social media. Yet countries such as Canada and
-             the U.S have simmilar depressionr rates across the age categories due to 
-             the simmilarities in lifestyle. Both the U.S "),
+             the U.S have simmilar depression rates across the age categories
+             due to the simmilarities in lifestyle. Both the U.S and Canada are
+             developed countries that value education and work. Due to these high-
+             stressful activities, there are higher percentage of stress. Along with
+             the factors of technology, social media, and generational differences
+             contributing to this data."),
            
            h2("Important Insight"),
            p("Since the dataset does not explicitly measure other factors along
@@ -275,7 +295,15 @@ ui <- navbarPage(
              groups, we can simultaneously take into account other information 
              about the location and age group to help gain more context on 
              the depression rates. If we look at the data as a whole, conclusions
-             and implications may be too general or unmeaningful."),
+             and implications may be too general or unmeaningful. The specific charts
+             comparing the U.S depression levels amongst different age categories 
+             reveals factors that contribute to different lifestyles. Along with
+             another chart comapring the factors of U.S and user-selcted countires. 
+             By specifically choosing underdeveloped countries such as Pakistan
+             and Nepal, data can help conclude age groups of 70 have higher stress
+             than U.S. However, U.S has higher stress fpr every other age category. 
+             This dataset revealed the societal norms and cultural difference and
+             their affects of stress levels on lifestyles."),
            h2("Implications"),
            p("The broader and main implications are to gain a deeper understanding
              of depression rates and mental health issues according to different

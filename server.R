@@ -6,6 +6,19 @@ library(tidyverse)
 
 server <- function(input, output) {
   
+  non_country_options <- c("American Samoa", "Andean Latin America", "Australasia", "Central Asia", "Central Europe", 
+                           "Central Europe, Eastern Europe, and Central Asia", "Central Latin America", "Central Sub-Saharan Africa", 
+                           "East Asia", "Eastern Europe", "Eastern Sub-Saharan Africa", "High SDI", "High-income", 
+                           "High-income Asia Pacific", "High-middle SDI", "Latin America and Caribbean", "Low SDI", 
+                           "Low-middle SDI", "Middle SDI", "North Africa and Middle East", "North America", 
+                           "Northern Mariana Islands", "Oceania", "South Asia", "Southeast Asia", "Southeast Asia, East Asia, and Oceania", 
+                           "Southern Latin America", "Southern Sub-Saharan Africa", "Sub-Saharan Africa", 
+                           "Tropical Latin America", "United States Virgin Islands", "Western Europe", "Western Sub-Saharan Africa", 
+                           "World")
+  valid_countries <- depressionrates %>%
+    filter(!entity %in% non_country_options) %>%
+    pull(entity)
+  
   reactive_bar_data <- reactive({
     year_data <- depressionrates %>%
       filter(entity == "United States", year == input$year) %>%
@@ -31,16 +44,20 @@ server <- function(input, output) {
     selected_age_groups <- input$checkGroup
     selected_country <- input$Country
     
+    if(is.null(selected_age_groups)) {
+      selected_age_groups <- c("10_14_years_old", "15_19_years_old", "20_24_years_old", "25_29_years_old", "30_34_years_old", "50_69_years_old", "70_years_old")
+    }
+    
     long_data_selected <- depressionrates %>%
       filter(year == 2017, entity == selected_country) %>%
       select(year, entity, "10_14_years_old", "15_19_years_old", "20_24_years_old", "25_29_years_old", "30_34_years_old", "50_69_years_old", "70_years_old") %>%
-      pivot_longer(cols = c("10_14_years_old", "15_19_years_old", "20_24_years_old", "25_29_years_old", "30_34_years_old", "50_69_years_old", "70_years_old"), names_to = "age_group", values_to = "Depression_Rate") %>%
+      pivot_longer(cols = selected_age_groups, names_to = "age_group", values_to = "Depression_Rate") %>%
       mutate(group = "Selected Country")
     
     long_data_us <- depressionrates %>%
       filter(year == 2017, entity == "United States") %>%
       select(year, entity, "10_14_years_old", "15_19_years_old", "20_24_years_old", "25_29_years_old", "30_34_years_old", "50_69_years_old", "70_years_old") %>%
-      pivot_longer(cols = c("10_14_years_old", "15_19_years_old", "20_24_years_old", "25_29_years_old", "30_34_years_old", "50_69_years_old", "70_years_old"), names_to = "age_group", values_to = "Depression_Rate") %>%
+      pivot_longer(cols = selected_age_groups, names_to = "age_group", values_to = "Depression_Rate") %>%
       mutate(group = "United States")
     
     combined_data <- bind_rows(long_data_selected, long_data_us)
@@ -56,6 +73,7 @@ server <- function(input, output) {
       labs(title = paste("Comparing Depression Rates for", input$Country, "and United States (2017)"),
            x = "Age Group", y = "Depression Rate (%)") +
       scale_fill_discrete(name = "Legend", labels = c(input$Country, "United States")) +
+      scale_x_discrete(labels = c("10_14_years_old" = "10 to 14 years old", "15_19_years_old" = "15 to 19 years old", "20_24_years_old" = "20 to 24 years old", "25_29_years_old" = "25 to 29 years old", "30_34_years_old" = "30 to 34 years old", "50_69_years_old" = "50 to 69 years old", "70_years_old" = "70 years old" )) +
       theme_minimal() +
       theme(axis.text.x = element_text(angle = 45, hjust = 1))
   })

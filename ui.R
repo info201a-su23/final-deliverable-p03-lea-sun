@@ -129,15 +129,20 @@ ui <- navbarPage(
              
              
              
-           )
+           ),
+           p("This chart attempts to understand depression rate trends across different age groups throughout different years.
+             By going through the select box drop down feature, you are able to pick and choose which country's data you want 
+             to see."),
+           p("With this chart, it's easy to see how different age groups might have a higher or lower rate of depression based 
+             on the country they live in. These differences could stem from economy, culture, weather, and more.")
   ),
   
   tabPanel("Comparing U.S. and Other Countries",
   fluidPage(
     checkboxGroupInput("checkGroup", label = h3("Checkbox group"), 
-                       choices = list("10 to 14 yr olds" = 1, "15 to 19 yr olds" = 2,"20 to 24 yr olds" = 3, "25 to 29 yr old" = 4,
-                                      "30 to 34 yr olds" = 5, "50 to 69 yr olds" = 6, "70 yr old" = 7), 
-                       selected = 1),
+                       c("10 to 14 years old" = "10_14_years_old", "15 to 19 years old" = "15_19_years_old","20 to 24 years old" = "20_24_years_old", "25 to 29 years old" = "25_29_years_old",
+                                      "30 to 34 years old" = "30_34_years_old", "50 to 69 years old" = "50_69_years_old", "70 years old" = "70_years_old"), 
+                       selected = "10_14_years_old"),
     
     
     hr(),
@@ -146,9 +151,14 @@ ui <- navbarPage(
   ),
     
   selectInput("Country", label = h3("Select a Country: "), 
-                choices = unique(depressionrates$entity),
+                choices = depressionrates$entity,
                   selected = "Afghanistan"),
-                  plotOutput("comparison_chart")
+                  plotOutput("comparison_chart"),
+  p("This chart attempts to understand how depression rates in different countries directly compare to the United States. 
+    By selecting a country to compare with and checking which age groups you want displayed, you will get a side-by-side 
+    bar graph to see the differences."),
+  p("With this chart, it's easy to see how depression is differently experienced based on age in countries other than our own. 
+    By seeing these differences, you can get a better understanding of the prevalence of depression in a different country.")
   ),
 
   tabPanel("Age Groups in the U.S. by Year",
@@ -161,7 +171,13 @@ ui <- navbarPage(
                  plotOutput("bar_chart")
                )
              )
-           )
+           ),
+           p("This chart attempts to understand how depression rates changed between age groups across the years. By allowing 
+             you to select a specific year, you can easily and clearly see the depression rates for the age groups in the 
+             United States."),
+           p("With this chart, you can easily see how the age groups' depression rates compare with each other side-by-side, 
+             and see how the differences in depression rates across all of age groups either increase or decrease throughout 
+             time.")
    ),
 
   tabPanel("Conclusion",

@@ -118,15 +118,17 @@ output$country_line_chart <- renderPlotly({
          y = "Depression Rate Percentage (%)",
          color = "Age Group") +
     scale_color_discrete(labels = c("10_14_years_old" = "10-14 years old",
-                                    "15_19_years_old" = "15-19 years old",
-                                    "20_24_years_old" = "20-24 years old",
-                                    "25_29_years_old" = "25-29 years old",
-                                    "30_34_years_old" = "30-34 years old",
-                                    "50_69_years_old" = "50-69 years old",
-                                    "70_years_old" = "70 years old")) +
+                                   "15_19_years_old" = "15-19 years old",
+                                   "20_24_years_old" = "20-24 years old",
+                                   "25_29_years_old" = "25-29 years old",
+                                   "30_34_years_old" = "30-34 years old",
+                                   "50_69_years_old" = "50-69 years old",
+                                   "70_years_old" = "70 years old")) +
     theme_minimal()
   
   ggplotly(gg)
+  
+  
 })
 
 output$country_line_select <- renderUI({

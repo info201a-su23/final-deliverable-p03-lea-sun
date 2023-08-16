@@ -2,6 +2,7 @@ library(shiny)
 library(ggplot2)
 library(dplyr)
 library(tidyverse)
+library(plotly)
 
 
 server <- function(input, output) {
@@ -27,17 +28,20 @@ server <- function(input, output) {
     return(year_data)
   })
   
-  output$bar_chart <- renderPlot({
+  output$bar_chart <- renderPlotly({
     year_data <- reactive_bar_data()
     
-    ggplot(year_data, aes(x = Age_Group, y = as.numeric(Depression_Rate), fill = Age_Group)) +
+    gg <- ggplot(year_data, aes(x = Age_Group, y = as.numeric(Depression_Rate), fill = Age_Group, text = paste("Age Group: ", Age_Group, "<brDepression Rate: ", Depression_Rate, "%"))) +
       geom_bar(stat = "identity") +
       scale_fill_discrete(labels = c("10_14_years_old" = "10 to 14 years old", "15_19_years_old" = "15 to 19 years old", "20_24_years_old" = "20 to 24 years old", "25_29_years_old" = "25 to 29 years old", "30_34_years_old" = "30 to 34 years old", "50_69_years_old" = "50 to 69 years old", "70_years_old" = "70 years old" )) +
       scale_x_discrete(labels = c("10_14_years_old" = "10 to 14 years old", "15_19_years_old" = "15 to 19 years old", "20_24_years_old" = "20 to 24 years old", "25_29_years_old" = "25 to 29 years old", "30_34_years_old" = "30 to 34 years old", "50_69_years_old" = "50 to 69 years old", "70_years_old" = "70 years old" )) +
       labs(title = paste("Age Groups in the US in", input$year),
            x = "Age Group", y = "Depression Rate (%)", fill = "Age Group") +
-theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+   theme_minimal() +
+   theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
+   guides(fill = guide_legend(title = "Age Group"))
+    
+    ggplotly(gg)
 })
 
 reactive_compare_data <- reactive({
@@ -65,11 +69,11 @@ reactive_compare_data <- reactive({
   
 })
 
-output$comparison_chart <- renderPlot({
+output$comparison_chart <- renderPlotly({
   combined_data <- reactive_compare_data()
   
 
-ggplot(combined_data, aes(x = age_group, y = as.numeric(Depression_Rate), fill = group)) +
+gg <- ggplot(combined_data, aes(x = age_group, y = as.numeric(Depression_Rate), fill = group)) +
   geom_bar(stat = "identity", position = "dodge") +
   labs(title = paste("Comparing Depression Rates for", input$Country, "and United States (2017)"),
        x = "Age Group", y = "Depression Rate (%)") +
@@ -77,6 +81,8 @@ ggplot(combined_data, aes(x = age_group, y = as.numeric(Depression_Rate), fill =
   scale_x_discrete(labels = c("10_14_years_old" = "10 to 14 years old", "15_19_years_old" = "15 to 19 years old", "20_24_years_old" = "20 to 24 years old", "25_29_years_old" = "25 to 29 years old", "30_34_years_old" = "30 to 34 years old", "50_69_years_old" = "50 to 69 years old", "70_years_old" = "70 years old" )) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+ggplotly(gg)
 })
 
 output$country_select <- renderUI({
@@ -97,10 +103,10 @@ reactive_line_data <- reactive({
   return(country_depression_rates)
 })
 
-output$country_line_chart <- renderPlot({
+output$country_line_chart <- renderPlotly({
   country_depression_rates <- reactive_line_data()
   
-  ggplot(country_depression_rates, aes(x = year, y = DepressionRate, color = AgeGroup)) +
+  gg <- ggplot(country_depression_rates, aes(x = year, y = DepressionRate, color = AgeGroup)) +
     geom_line() +
     labs(title = paste("Depression Rates in", input$entity, "by Age Group Throughout the Years"),
          x = "Year",
@@ -114,6 +120,8 @@ output$country_line_chart <- renderPlot({
                                     "50_69_years_old" = "50-69 years old",
                                     "70_years_old" = "70 years old")) +
     theme_minimal()
+  
+  ggplotly(gg)
 })
 
 output$country_line_select <- renderUI({
